@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{%include "superior/barra.html"%}
+<body>
+    <h1 style="color: blue">hola alumnos, bienvenidos </h1>
+    
+    {%comment%}
+    
+    DISFRUTA EL PROCESO
+    //TEMPLATE FILTERS EN DJANGO, SEGUNDA OPCION(BUILT)
+
+    {%endcomment%}
+    
+    {%if nombre_persona == 'Profesor Jerick'%}
+    
+    <p>El curso lo imparte el profesor titular</p>
+
+    {%else%}
+
+    <p>El curso lo imparte un profesor suplente</p>
+    
+    {%endif%}
+
+    <p>El nombre del profesor es: {{nombre_persona.upper}}{{apellido_persona.upper}}</p>
+    <P>El dia de hoy estamos:{{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}</P>
+    <p><strong>Tema del curso:</strong></p>
+    <p>
+        <ul>
+        {%if  temas %}
+            {% for elTema in temas  %}
+        
+            <li><p>{{elTema|first|upper}}</p></li>
+
+            {% endfor %}
+        {%else%}
+            <p>No hay elementos que mostrar</p>
+        {%endif%}
+        </ul>
+    </p>
+
+</body>
+</html>
